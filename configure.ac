@@ -239,8 +239,12 @@ if test "x$GCC" = "xyes" -o "x$CC" = "xclang" ; then
 	ac_supports_W_linker_passthrough=yes
 fi
 
+# EWA: Should this really be here?  I'm guessing no, but this is the first use of CC_FOR_BUILD
+AX_PROG_CC_FOR_BUILD
+
 if test "x$CC_FOR_BUILD" = x
 then
+       AC_ERROR([CC_FOR_BUILD is undefined.  That shouldn't happen!])
        CC_FOR_BUILD=$CC
 fi
 AC_SUBST(CC_FOR_BUILD)
